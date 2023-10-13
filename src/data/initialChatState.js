@@ -1,6 +1,6 @@
-import {nanoid} from 'nanoid';
+import {nanoid} from "nanoid";
 
-export let initialState = {
+export const initialState = {
     chats: [
         {
             id: 0,
@@ -71,21 +71,4 @@ export let initialState = {
             isActive: false
         },
     ],
-    profile: {
-        name: {
-            text: 'Имя',
-            engText: 'name',
-            value: 'WalkerWoid'
-        },
-        age: {
-            text: 'Возраст',
-            engText: 'age',
-            value: '20'
-        },
-        gender: {
-            text: 'Пол',
-            engText: 'gender',
-            value: 'Мужской'
-        }
-    }
 }

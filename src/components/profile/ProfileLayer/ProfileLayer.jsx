@@ -1,7 +1,5 @@
-import React, {useContext, useCallback}
+import React
     from "react";
-import {MainContext}
-    from "components/Layer";
 import {ProfileLine}
     from "profile/ProfileLine";
 
@@ -12,29 +10,14 @@ const {
     ProfileH2,
 } = StyleCss
 
-export const ProfileLayer = () => {
-    const {profile} = useContext(MainContext).state
-    const {dispatch} = useContext(MainContext)
-
-    const changeMeaning = useCallback((newValue, engText) => {
-        dispatch(
-                {
-                    type: 'CHANGE_PROFILE',
-                    payload: {
-                        engText,
-                        newValue
-                    }
-                }
-            )
-    }, [profile])
-
+export const ProfileLayer = ({profile, updateProfile}) => {
     return (
         <ProfileContainer>
             <ProfileH2>Профиль</ProfileH2>
 
-            <ProfileLine info={profile.name} changeMeaning={changeMeaning} />
-            <ProfileLine info={profile.age} changeMeaning={changeMeaning} />
-            <ProfileLine info={profile.gender} changeMeaning={changeMeaning} />
+            <ProfileLine info={profile.name} updateProfile={updateProfile} />
+            <ProfileLine info={profile.age} updateProfile={updateProfile} />
+            <ProfileLine info={profile.gender} updateProfile={updateProfile} />
         </ProfileContainer>
     )
 }

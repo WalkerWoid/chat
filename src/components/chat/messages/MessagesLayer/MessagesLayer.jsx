@@ -1,15 +1,13 @@
 import React
-    , {useContext} from "react";
-import {MainContext}
-    from "components/Layer";
+    from "react";
 import {useParams} from "react-router-dom";
 
 import {StyleCss}
     from "./style.css"
-import {MessagesList}
-    from "messages/MessagesList";
-import {SendMessages}
-    from "messages/SendMessages";
+import {MessagesListContainer}
+    from "containers/MessagesListContainer";
+import {SendMessageContainer}
+    from "containers/SendMessageContainer";
 
 const {
     MessagesContainer,
@@ -17,9 +15,7 @@ const {
     ErrorChatP
 } = StyleCss
 
-export const MessagesLayer = () => {
-    const {chats} = useContext(MainContext).state
-    const {dispatch} = useContext(MainContext)
+export const MessagesLayer = ({chats}) => {
     const {id} = useParams()
 
     return (
@@ -33,8 +29,8 @@ export const MessagesLayer = () => {
                 id < chats.length && chats[id].isActive
                     ?
                     <>
-                        <MessagesList id={id} chats={chats} />
-                        <SendMessages id={id} chats={chats} dispatch={dispatch}/>
+                        <MessagesListContainer id={id} />
+                        <SendMessageContainer id={id} />
                     </>
                     : <ErrorChatP>Выберите чат слева</ErrorChatP>
             }

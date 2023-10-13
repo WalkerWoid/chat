@@ -12,8 +12,8 @@ const {
     ProfileButton
 } = StyleCss
 
-export const ProfileLine = ({info, changeMeaning}) => {
-    const {text, engText, value} = info
+export const ProfileLine = ({info, updateProfile}) => {
+    const {text, engFieldName, value} = info
     const [newValue, setNewValue] = useState(value)
 
     const changeValueHandler = (event) => {
@@ -36,7 +36,7 @@ export const ProfileLine = ({info, changeMeaning}) => {
                         value={newValue} />
                     <ProfileButton
                         type={'button'}
-                        onClick={() => changeMeaning(newValue, engText)}>Изменить</ProfileButton>
+                        onClick={() => updateProfile(newValue, engFieldName)}>Изменить</ProfileButton>
                 </ProfileUnit>
             </ProfileRow>
         </>

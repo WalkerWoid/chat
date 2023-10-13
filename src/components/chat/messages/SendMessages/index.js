@@ -1,1 +1,0 @@
-export {SendMessages} from './MessagesInput'

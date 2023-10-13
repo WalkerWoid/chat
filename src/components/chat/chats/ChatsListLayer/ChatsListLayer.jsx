@@ -1,10 +1,10 @@
 import React
     from "react";
 
-import {ChatCreate}
-    from "chats/ChatCreate";
-import {ChatsList}
-    from "chats/ChatsList";
+import {ChatCreateContainer}
+    from "containers/ChatCreateContainer";
+import {ChatsListContainer}
+    from "containers/ChatsListContainer";
 
 import {styleCss}
     from './style.css'
@@ -19,8 +19,8 @@ export const ChatsListLayer = () => {
     return (
         <ChatsContainer>
             <ChatsHeader>Чаты</ChatsHeader>
-            <ChatCreate />
-            <ChatsList />
+            <ChatCreateContainer />
+            <ChatsListContainer />
         </ChatsContainer>
     )
 }

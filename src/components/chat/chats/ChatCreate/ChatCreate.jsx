@@ -1,7 +1,5 @@
-import React, {useState, useContext, useCallback}
+import React, {useState}
     from 'react'
-import {MainContext}
-    from "components/Layer";
 
 import {StyleCss}
     from './style.css'
@@ -11,27 +9,12 @@ const {
     ChatCreateButton
 } = StyleCss
 
-export const ChatCreate = () => {
+export const ChatCreate = ({chatCreate}) => {
     const [chatTitle, setChatTitle] = useState('')
-    const {chats} = useContext(MainContext).state
-    const {dispatch} = useContext(MainContext)
-
-    const getNewId = () => {
-        let id = 0
-        for (let i = 0; i < chats.length; i++) {
-            if (chats.find(chat => chat.id === id))
-                id+=1
-        }
-
-        return id
-    }
-    const chatCreate = useCallback((title) => {
-        if (title.length === 0)
-            title = 'Новый чат'
-
-        dispatch({type: 'CHAT_CREATE', payload: {id: getNewId(), title: title, messages: [], isActive: false}})
+    const chatCreateHandler = () => {
+        chatCreate(chatTitle)
         setChatTitle('')
-    }, [getNewId()])
+    }
 
     const handleChange = (event) => {
         setChatTitle(event.target.value)
@@ -41,7 +24,7 @@ export const ChatCreate = () => {
         <ChatCreateContainer>
             <ChatCreateButton
                 type={'button'}
-                onClick={() => chatCreate(chatTitle)}
+                onClick={() => chatCreateHandler()}
             >
                 +
             </ChatCreateButton>

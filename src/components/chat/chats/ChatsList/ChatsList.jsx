@@ -1,14 +1,10 @@
-import React, {useContext, useEffect}
+import React
     from "react";
-import {useParams}
-    from "react-router-dom";
-import {MainContext}
-    from "components/Layer";
 import {useNavigate}
     from "react-router-dom";
 
-import {ChatDelete}
-    from "chats/ChatDelete";
+import {ChatDeleteContainer}
+    from "containers/ChatDeleteContainer";
 
 import {StyleCss}
     from './style.css'
@@ -20,22 +16,8 @@ const {
     NoChats
 } = StyleCss
 
-export const ChatsList = () => {
-    const {chats} = useContext(MainContext).state
-    const {dispatch} = useContext(MainContext)
+export const ChatsList = ({chats, setActiveChat}) => {
     const navigate = useNavigate()
-    const {index} = useParams()
-
-    useEffect(() => {
-        if (index)
-            setActiveChat(+index)
-    }, [])
-
-    const setActiveChat = (index) => {
-        chats.forEach(chat => chat.isActive ? chat.isActive = false : '')
-        chats[index].isActive = true
-        dispatch({type: 'SET_ACTIVE_CHAT', payload: chats})
-    }
 
     return (
         <ChatUl>
@@ -51,7 +33,7 @@ export const ChatsList = () => {
                                 }}>
                                 {chat.title}
                             </ChatP>
-                            <ChatDelete index={index} />
+                            <ChatDeleteContainer index={index} />
                         </ChatLi>
                     )
                 })

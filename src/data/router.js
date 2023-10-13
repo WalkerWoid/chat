@@ -6,10 +6,10 @@ import {Layer}
     from "components/Layer";
 import {ChatLayer}
     from "chat/ChatLayer";
-import {MessagesLayer}
-    from "messages/MessagesLayer";
-import {ProfileLayer}
-    from "profile/ProfileLayer";
+import {MessagesLayerContainer}
+    from "containers/MessagesLayerContainer";
+import {ProfileLayerContainer}
+    from "containers/ProfileLayerContainer";
 import {GameLayer}
     from "game/GameLayer";
 
@@ -28,14 +28,14 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: '/chat/:id',
-                        element: <MessagesLayer />
+                        element: <MessagesLayerContainer />
                     },
 
                 ]
             },
             {
                 path: '/profile',
-                element: <ProfileLayer />,
+                element: <ProfileLayerContainer />,
             },
             {
                 path: '/game',

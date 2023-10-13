@@ -10,6 +10,9 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
+            actions: path.join(__dirname, 'src', 'actions'),
+            reducers: path.join(__dirname, 'src', 'reducers'),
+            containers: path.join(__dirname, 'src', 'containers'),
             components: path.join(__dirname, 'src', 'components'),
             data: path.join(__dirname, 'src', 'data'),
             reducer: path.join(__dirname, 'src', 'reducer'),
